@@ -1,41 +1,77 @@
-# Gender and Age Classification using OpenCV Deep Learning ( C++/Python )
+# 🎯 Advanced Age & Gender Detection 
 
-**This repository contains the code for [Gender and Age Classification using OpenCV Deep Learning ( C++/Python )](https://learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/) blog post**.
+![Version](https://img.shields.io/badge/version-2.0-blue.svg)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
+![Next.js](https://img.shields.io/badge/next.js-15-black.svg)
+![Docker](https://img.shields.io/badge/docker-ready-blue.svg)
 
-[<img src="https://learnopencv.com/wp-content/uploads/2022/07/download-button-e1657285155454.png" alt="download" width="200">](https://www.dropbox.com/sh/43lv4tav0s4tqn9/AACEHVd2QE-YPwc1LxpJOXw-a?dl=1)
+A complete, production-ready full-stack application that leverages state-of-the-art Deep Learning models to instantly detect faces and predict their **Age** and **Gender** with incredible accuracy.
 
-## Models
-Download models from
+---
 
-Gender Net : https://www.dropbox.com/s/iyv483wz7ztr9gh/gender_net.caffemodel?dl=0"
+## ✨ Features
 
-Age Net : https://www.dropbox.com/s/xfb20y596869vbb/age_net.caffemodel?dl=0"
+- **🧠 State-of-the-Art Deep Learning:** Upgraded to use **DeepFace** (backed by VGG-Face / TensorFlow) for highly precise real-world demographic predictions, completely replacing outdated OpenCV Caffe models.
+- **📸 Real-time Webcam Support:** Seamlessly integrated browser-based webcam capturing to instantly analyze faces on the fly!
+- **⚡ High-Performance Backend:** A fully optimized **FastAPI** Python backend capable of processing multiple faces in a single frame.
+- **🎨 Premium UI/UX:** A stunning, dark-mode **Next.js** frontend crafted with glassmorphism aesthetics, fluid micro-animations, and dynamic canvas bounding boxes.
+- **🐳 Docker Orchestration:** Effortless deployment using a multi-container Docker Compose setup. Zero manual dependency headaches!
 
-## Run Code
+---
 
-### C++
-```
-cmake .
-make
-./AgeGender <input_file>(Leave blank for webcam)
-```
+## 🛠️ Tech Stack
 
-### Python
-```
-python AgeGender.py --input <input_file>(Leave blank for webcam)
-```
+### Frontend
+- **Framework:** Next.js 15 (App Router) & React
+- **Styling:** Custom Vanilla CSS (Glassmorphism, Animations)
+- **Features:** Native HTML5 Canvas API, MediaDevices API (Webcam)
 
-## Sample Result
+### Backend
+- **Framework:** FastAPI & Uvicorn
+- **AI / ML:** DeepFace, TensorFlow, OpenCV, NumPy
+- **Image Processing:** In-memory byte array processing for maximum speed.
 
-![](sample-output.jpg)
+---
 
+## 🚀 Getting Started
 
-# AI Courses by OpenCV
+Running the entire stack is incredibly simple thanks to Docker. 
 
-Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
+### Prerequisites
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed on your machine.
 
-<a href="https://opencv.org/courses/">
-<p align="center"> 
-<img src="https://learnopencv.com/wp-content/uploads/2023/01/AI-Courses-By-OpenCV-Github.png">
-</p>
-</a>
+### Installation & Run
+
+1. **Clone the repository:**
+   ```bash
+   git clone git@github.com:ashishnayal/Age-And-Gender-Detection-.git
+   cd Age-And-Gender-Detection-
+   ```
+
+2. **Spin up the cluster:**
+   ```bash
+   docker-compose up --build
+   ```
+   > **Note:** The very first time you run this, Docker will download the heavy TensorFlow dependencies, and DeepFace will download the state-of-the-art model weights (~few hundred MBs) from the internet when you take your first photo. Subsequent runs will be extremely fast!
+
+3. **Access the Application:**
+   Open your browser and navigate to:
+   - **Frontend UI:** [http://localhost:3000](http://localhost:3000)
+   - **Backend API Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
+
+---
+
+## 💡 How It Works
+
+1. **Upload or Capture:** The user interacts with the Next.js frontend to either upload a local image or capture a live frame using their webcam.
+2. **API Request:** The frontend packages the image as `FormData` and sends a secure POST request to the `/predict` FastAPI endpoint.
+3. **AI Analysis:** The backend intercepts the image array in-memory and passes it to the `DeepFace` engine. The engine detects all facial areas and runs classification models to determine Gender and Age.
+4. **Visualization:** The JSON payload is returned to the frontend, which uses the Canvas API to instantly draw bounding boxes and overlay the demographic statistics right over the image!
+
+---
+
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to contribute.
+
+## 📝 License
+This project is open-source and available under the [MIT License](LICENSE).
